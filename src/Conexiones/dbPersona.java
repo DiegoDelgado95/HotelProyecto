@@ -17,14 +17,14 @@ public class dbPersona {
         
         // Muestro los Clientes en la Tabla
         
-        public DefaultTableModel mostrar (){
+        public DefaultTableModel mostrar (String buscar){
             DefaultTableModel  modelo;
             String [] titulos = {"idPersona","Nombre","Apellido", "DNI","Telefono"};
             String [] registro = new String [5];
             
             modelo = new DefaultTableModel(null,titulos);
             
-            sSQL = "Select * from Persona";
+            sSQL = "Select * from Persona where nombre like '%"+buscar+"%' order by idPersona";
             
             try{
                 
@@ -70,4 +70,52 @@ public class dbPersona {
                 return false;
             }
         }
+        
+        public boolean editar (Persona p){
+            sSQL = "update Persona set nombre=?, apellido=?, dni=?, telefono=? where idPersona=?";
+            
+            try {
+                PreparedStatement pst = cn.prepareStatement(sSQL);
+                pst.setString(1, p.getNombre());
+                pst.setString(2, p.getApellido());
+                pst.setInt(3, p.getDNI());
+                pst.setInt(4,p.getTelefono());
+                pst.setInt(5, p.getIdPersona());
+                
+                int n=pst.executeUpdate();
+                if(n!=0){
+                    return true;
+                }else{
+                    return false;
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e);
+                return false;
+            }   
+        }
+        
+        
+        public boolean eliminar (Persona p){
+            sSQL = "delete from Persona where idPersona=?";
+            
+            try {
+                PreparedStatement pst = cn.prepareStatement(sSQL);
+                pst.setInt(1, p.getIdPersona());
+                
+                int n=pst.executeUpdate();
+                
+                if(n!=0){
+                    return true;
+                }else{
+                    return false;
+                }
+                
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null,e);
+                return false;
+            }
+                    
+        } 
+        
+        
 }

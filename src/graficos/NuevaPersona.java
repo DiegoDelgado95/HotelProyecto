@@ -21,6 +21,50 @@ public class NuevaPersona extends javax.swing.JInternalFrame {
      */
     public NuevaPersona() {
         initComponents();
+        mostrar("");
+        inhabilitar();
+        
+        
+    }
+    
+    //Variable de control
+    private String accion="guarda";
+    
+    void inhabilitar (){
+        txtIDpersona.setVisible(false);
+        txtNuevaPersonaApellido.setEnabled(false);
+        txtNuevaPersonaNombre.setEnabled(false);
+        txtNuevaPersonaDNI.setEnabled(false);
+        txtNuevaPersonaTelefono.setEnabled(false);
+        
+        btnNuevoUsuarioAgregar.setEnabled(false);
+        btnNuevoUsuarioCancelar.setEnabled(false);
+        btnEliminar.setEnabled(false);
+        
+        txtIDpersona.setText("");
+        txtNuevaPersonaApellido.setText("");
+        txtNuevaPersonaNombre.setText("");
+        txtNuevaPersonaDNI.setText("");
+        txtNuevaPersonaTelefono.setText("");
+    }
+    
+    void habilitar(){
+        txtIDpersona.setVisible(false);
+        
+        txtNuevaPersonaApellido.setEnabled(true);
+        txtNuevaPersonaNombre.setEnabled(true);
+        txtNuevaPersonaDNI.setEnabled(true);
+        txtNuevaPersonaTelefono.setEnabled(true);
+        
+        btnNuevoUsuarioAgregar.setEnabled(true);
+        btnNuevoUsuarioCancelar.setEnabled(true);
+        btnEliminar.setEnabled(true);
+        
+        txtIDpersona.setText("");
+        txtNuevaPersonaApellido.setText("");
+        txtNuevaPersonaNombre.setText("");
+        txtNuevaPersonaDNI.setText("");
+        txtNuevaPersonaTelefono.setText("");
     }
     
     //Ocultar_Columna me oculta la columna de ID de Persona
@@ -31,11 +75,12 @@ public class NuevaPersona extends javax.swing.JInternalFrame {
     }
     
     //Funcion para llenar la tabla con persona
-    void mostrar (){
+    void mostrar (String buscar){
         try {
             DefaultTableModel modelo;
             dbPersona func = new dbPersona();
-            modelo = func.mostrar();
+            modelo = func.mostrar(buscar);
+            
             tableNuevaPersona.setModel(modelo);
             ocultar_columna();
         } catch (Exception e) {
@@ -75,15 +120,17 @@ public class NuevaPersona extends javax.swing.JInternalFrame {
         btnNuevoUsuarioAgregar = new javax.swing.JButton();
         btnNuevoUsuarioCancelar = new javax.swing.JButton();
         btnNuevoUsuarioGuardar = new javax.swing.JButton();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        txtIDpersona = new javax.swing.JTextPane();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
         tableNuevaPersona = new javax.swing.JTable();
         jLabel6 = new javax.swing.JLabel();
         jScrollPane6 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        txtBuscar = new javax.swing.JTextPane();
+        btnBuscar = new javax.swing.JButton();
+        btnActualizar = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
 
         setTitle("Nueva Persona");
 
@@ -108,7 +155,7 @@ public class NuevaPersona extends javax.swing.JInternalFrame {
 
         jScrollPane3.setViewportView(txtNuevaPersonaDNI);
 
-        btnNuevoUsuarioAgregar.setText("Nuevo");
+        btnNuevoUsuarioAgregar.setText("Agregar");
         btnNuevoUsuarioAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNuevoUsuarioAgregarActionPerformed(evt);
@@ -122,12 +169,14 @@ public class NuevaPersona extends javax.swing.JInternalFrame {
             }
         });
 
-        btnNuevoUsuarioGuardar.setText("Agregar");
+        btnNuevoUsuarioGuardar.setText("Nuevo");
         btnNuevoUsuarioGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNuevoUsuarioGuardarActionPerformed(evt);
             }
         });
+
+        jScrollPane7.setViewportView(txtIDpersona);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -136,25 +185,27 @@ public class NuevaPersona extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel4))
-                .addGap(46, 46, 46)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(0, 12, Short.MAX_VALUE)
-                .addComponent(btnNuevoUsuarioAgregar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnNuevoUsuarioGuardar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnNuevoUsuarioCancelar)
-                .addGap(17, 17, 17))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnNuevoUsuarioGuardar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnNuevoUsuarioAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnNuevoUsuarioCancelar))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel4))
+                        .addGap(46, 46, 46)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
+                            .addComponent(jScrollPane7))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -177,7 +228,9 @@ public class NuevaPersona extends javax.swing.JInternalFrame {
                         .addComponent(jLabel3)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel4)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNuevoUsuarioCancelar)
                     .addComponent(btnNuevoUsuarioAgregar)
@@ -200,22 +253,37 @@ public class NuevaPersona extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tableNuevaPersona.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableNuevaPersonaMouseClicked(evt);
+            }
+        });
         jScrollPane5.setViewportView(tableNuevaPersona);
 
         jLabel6.setText("Buscar:");
 
-        jScrollPane6.setViewportView(jTextPane1);
+        jScrollPane6.setViewportView(txtBuscar);
 
-        jButton1.setText("Buscar");
-
-        jButton2.setText("Actualizar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnBuscarActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Eliminar");
+        btnActualizar.setText("Actualizar");
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarActionPerformed(evt);
+            }
+        });
+
+        btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -224,17 +292,17 @@ public class NuevaPersona extends javax.swing.JInternalFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 573, Short.MAX_VALUE)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 567, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1)
+                        .addComponent(btnBuscar)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2)
+                        .addComponent(btnActualizar)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton3)
+                        .addComponent(btnEliminar)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -246,9 +314,9 @@ public class NuevaPersona extends javax.swing.JInternalFrame {
                     .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton1)
-                        .addComponent(jButton2)
-                        .addComponent(jButton3)))
+                        .addComponent(btnBuscar)
+                        .addComponent(btnActualizar)
+                        .addComponent(btnEliminar)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addContainerGap())
@@ -291,7 +359,7 @@ public class NuevaPersona extends javax.swing.JInternalFrame {
 
     private void btnNuevoUsuarioAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoUsuarioAgregarActionPerformed
         if(txtNuevaPersonaNombre.getText().equals("") && txtNuevaPersonaApellido.getText().equals("") && txtNuevaPersonaDNI.getText().equals("") && txtNuevaPersonaTelefono.getText().equals("") ){
-        JOptionPane.showMessageDialog(null, "Los campos estan vacios");
+        JOptionPane.showMessageDialog(null, "Se deben llenar todos los campos");
         }else{
         Persona nuePersona = new Persona();
         nuePersona.setApellido(txtNuevaPersonaApellido.getText());
@@ -300,30 +368,84 @@ public class NuevaPersona extends javax.swing.JInternalFrame {
         nuePersona.setTelefono(Integer.parseInt(txtNuevaPersonaTelefono.getText()));
         
         dbPersona Nuevo = new dbPersona();
-        if(Nuevo.insertar(nuePersona)){
-            JOptionPane.showMessageDialog(null, "Persona insertada correctamente");
-        }else{
-            JOptionPane.showMessageDialog(null,"Error al insertar personar");
+        
+        if (accion.equals("guardar")){
+            if(Nuevo.insertar(nuePersona)){
+                JOptionPane.showMessageDialog(null, "El cliente se agrego correctamente");
+                mostrar("");
+                inhabilitar();
+            }
+        }else if(accion.equals("editar")){
+            nuePersona.setIdPersona(Integer.parseInt(txtIDpersona.getText()));
+            if(Nuevo.editar(nuePersona)){
+                JOptionPane.showMessageDialog(null, "El cliente se edito correctamente");
+                mostrar("");
+                inhabilitar();
+            }
         }
         }
+        
     }//GEN-LAST:event_btnNuevoUsuarioAgregarActionPerformed
 
     private void btnNuevoUsuarioGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoUsuarioGuardarActionPerformed
-        // TODO add your handling code here:
+        
+        habilitar();
+        btnNuevoUsuarioAgregar.setText("Guardar");
+        accion="guardar";
     }//GEN-LAST:event_btnNuevoUsuarioGuardarActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-            mostrar();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+            mostrar("");
+            inhabilitar();
+    }//GEN-LAST:event_btnActualizarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        if(!txtIDpersona.getText().equals("")){
+            int confirmacion = JOptionPane.showConfirmDialog(rootPane, "Esta seguro que debea eliminar al cliente?","Confirmar",2);
+            
+            if(confirmacion == 0){
+                Persona dts = new Persona();
+                dbPersona func = new dbPersona();
+                
+                dts.setIdPersona(Integer.parseInt(txtIDpersona.getText()));
+                func.eliminar(dts);
+                mostrar("");
+                inhabilitar();
+                
+            }
+        }
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        mostrar(txtBuscar.getText());
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void tableNuevaPersonaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableNuevaPersonaMouseClicked
+        btnNuevoUsuarioAgregar.setText("Editar");
+        habilitar();
+        btnEliminar.setEnabled(true);
+        accion="editar";
+        
+        int fila = tableNuevaPersona.rowAtPoint(evt.getPoint());
+        
+        txtIDpersona.setText(tableNuevaPersona.getValueAt(fila, 0).toString());
+        txtNuevaPersonaApellido.setText(tableNuevaPersona.getValueAt(fila,1).toString());
+        txtNuevaPersonaNombre.setText(tableNuevaPersona.getValueAt(fila,2).toString());
+        txtNuevaPersonaDNI.setText(tableNuevaPersona.getValueAt(fila,3).toString());
+        txtNuevaPersonaTelefono.setText(tableNuevaPersona.getValueAt(fila,4).toString());
+        
+                
+        
+    }//GEN-LAST:event_tableNuevaPersonaMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnActualizar;
+    private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnNuevoUsuarioAgregar;
     private javax.swing.JButton btnNuevoUsuarioCancelar;
     private javax.swing.JButton btnNuevoUsuarioGuardar;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -338,8 +460,10 @@ public class NuevaPersona extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JTextPane jTextPane1;
+    private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JTable tableNuevaPersona;
+    private javax.swing.JTextPane txtBuscar;
+    private javax.swing.JTextPane txtIDpersona;
     private javax.swing.JTextPane txtNuevaPersonaApellido;
     private javax.swing.JTextPane txtNuevaPersonaDNI;
     private javax.swing.JTextPane txtNuevaPersonaNombre;

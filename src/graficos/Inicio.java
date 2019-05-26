@@ -41,7 +41,6 @@ public class Inicio extends javax.swing.JFrame {
         jMenu4.setText("jMenu4");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(800, 500));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -64,9 +63,9 @@ public class Inicio extends javax.swing.JFrame {
         jMenu1.setText("Archivos");
         jMenuBar1.add(jMenu1);
 
-        mnuPersonaCrear.setText("Persona");
+        mnuPersonaCrear.setText("Clientes");
 
-        jMenuItem1.setText("Crear");
+        jMenuItem1.setText("Nuevo / Buscar Cliente");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem1ActionPerformed(evt);
