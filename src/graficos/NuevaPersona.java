@@ -109,19 +109,14 @@ public class NuevaPersona extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        txtNuevaPersonaTelefono = new javax.swing.JTextPane();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        txtNuevaPersonaNombre = new javax.swing.JTextPane();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        txtNuevaPersonaApellido = new javax.swing.JTextPane();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        txtNuevaPersonaDNI = new javax.swing.JTextPane();
         btnNuevoUsuarioAgregar = new javax.swing.JButton();
         btnNuevoUsuarioCancelar = new javax.swing.JButton();
         btnNuevoUsuarioGuardar = new javax.swing.JButton();
-        jScrollPane7 = new javax.swing.JScrollPane();
-        txtIDpersona = new javax.swing.JTextPane();
+        txtNuevaPersonaNombre = new javax.swing.JTextField();
+        txtNuevaPersonaApellido = new javax.swing.JTextField();
+        txtNuevaPersonaDNI = new javax.swing.JTextField();
+        txtNuevaPersonaTelefono = new javax.swing.JTextField();
+        txtIDpersona = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
         tableNuevaPersona = new javax.swing.JTable();
@@ -131,6 +126,7 @@ public class NuevaPersona extends javax.swing.JInternalFrame {
         btnBuscar = new javax.swing.JButton();
         btnActualizar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
+        btnSalir = new javax.swing.JButton();
 
         setTitle("Nueva Persona");
 
@@ -146,14 +142,6 @@ public class NuevaPersona extends javax.swing.JInternalFrame {
         jLabel3.setText("DNI:");
 
         jLabel4.setText("Telefono:");
-
-        jScrollPane4.setViewportView(txtNuevaPersonaTelefono);
-
-        jScrollPane1.setViewportView(txtNuevaPersonaNombre);
-
-        jScrollPane2.setViewportView(txtNuevaPersonaApellido);
-
-        jScrollPane3.setViewportView(txtNuevaPersonaDNI);
 
         btnNuevoUsuarioAgregar.setText("Agregar");
         btnNuevoUsuarioAgregar.addActionListener(new java.awt.event.ActionListener() {
@@ -176,7 +164,29 @@ public class NuevaPersona extends javax.swing.JInternalFrame {
             }
         });
 
-        jScrollPane7.setViewportView(txtIDpersona);
+        txtNuevaPersonaNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNuevaPersonaNombreActionPerformed(evt);
+            }
+        });
+
+        txtNuevaPersonaApellido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNuevaPersonaApellidoActionPerformed(evt);
+            }
+        });
+
+        txtNuevaPersonaDNI.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNuevaPersonaDNIActionPerformed(evt);
+            }
+        });
+
+        txtNuevaPersonaTelefono.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNuevaPersonaTelefonoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -198,13 +208,12 @@ public class NuevaPersona extends javax.swing.JInternalFrame {
                             .addComponent(jLabel1)
                             .addComponent(jLabel4))
                         .addGap(46, 46, 46)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
-                            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
-                            .addComponent(jScrollPane7))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtNuevaPersonaNombre)
+                            .addComponent(txtNuevaPersonaApellido)
+                            .addComponent(txtNuevaPersonaTelefono)
+                            .addComponent(txtIDpersona)
+                            .addComponent(txtNuevaPersonaDNI))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -213,13 +222,13 @@ public class NuevaPersona extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtNuevaPersonaNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtNuevaPersonaApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtNuevaPersonaDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtNuevaPersonaTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
@@ -228,9 +237,9 @@ public class NuevaPersona extends javax.swing.JInternalFrame {
                         .addComponent(jLabel3)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel4)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(19, 19, 19)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtIDpersona, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNuevoUsuarioCancelar)
                     .addComponent(btnNuevoUsuarioAgregar)
@@ -292,7 +301,7 @@ public class NuevaPersona extends javax.swing.JInternalFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 567, Short.MAX_VALUE)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 566, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -322,6 +331,13 @@ public class NuevaPersona extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
+        btnSalir.setText("Salir");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -335,28 +351,33 @@ public class NuevaPersona extends javax.swing.JInternalFrame {
                         .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel5)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel5)
+                .addGap(13, 13, 13)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(btnSalir))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNuevoUsuarioCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoUsuarioCancelarActionPerformed
-        this.dispose();
+        inhabilitar();
     }//GEN-LAST:event_btnNuevoUsuarioCancelarActionPerformed
 
+    //Funcion para crear un nuevo Cliente o Editarlo
+    
     private void btnNuevoUsuarioAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoUsuarioAgregarActionPerformed
         if(txtNuevaPersonaNombre.getText().equals("") && txtNuevaPersonaApellido.getText().equals("") && txtNuevaPersonaDNI.getText().equals("") && txtNuevaPersonaTelefono.getText().equals("") ){
         JOptionPane.showMessageDialog(null, "Se deben llenar todos los campos");
@@ -387,8 +408,9 @@ public class NuevaPersona extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_btnNuevoUsuarioAgregarActionPerformed
 
+    //Habilito las casillas para crear un nuevo Cliente
+    
     private void btnNuevoUsuarioGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoUsuarioGuardarActionPerformed
-        
         habilitar();
         btnNuevoUsuarioAgregar.setText("Guardar");
         accion="guardar";
@@ -399,6 +421,8 @@ public class NuevaPersona extends javax.swing.JInternalFrame {
             inhabilitar();
     }//GEN-LAST:event_btnActualizarActionPerformed
 
+    //Eliminar un Cliente
+    
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         if(!txtIDpersona.getText().equals("")){
             int confirmacion = JOptionPane.showConfirmDialog(rootPane, "Esta seguro que debea eliminar al cliente?","Confirmar",2);
@@ -411,7 +435,6 @@ public class NuevaPersona extends javax.swing.JInternalFrame {
                 func.eliminar(dts);
                 mostrar("");
                 inhabilitar();
-                
             }
         }
     }//GEN-LAST:event_btnEliminarActionPerformed
@@ -420,6 +443,8 @@ public class NuevaPersona extends javax.swing.JInternalFrame {
         mostrar(txtBuscar.getText());
     }//GEN-LAST:event_btnBuscarActionPerformed
 
+    //Funcion para transladar los datos de la tabla al pane de cliente para editar
+    
     private void tableNuevaPersonaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableNuevaPersonaMouseClicked
         btnNuevoUsuarioAgregar.setText("Editar");
         habilitar();
@@ -432,11 +457,30 @@ public class NuevaPersona extends javax.swing.JInternalFrame {
         txtNuevaPersonaApellido.setText(tableNuevaPersona.getValueAt(fila,1).toString());
         txtNuevaPersonaNombre.setText(tableNuevaPersona.getValueAt(fila,2).toString());
         txtNuevaPersonaDNI.setText(tableNuevaPersona.getValueAt(fila,3).toString());
-        txtNuevaPersonaTelefono.setText(tableNuevaPersona.getValueAt(fila,4).toString());
-        
-                
-        
+        txtNuevaPersonaTelefono.setText(tableNuevaPersona.getValueAt(fila,4).toString());  
     }//GEN-LAST:event_tableNuevaPersonaMouseClicked
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnSalirActionPerformed
+
+    //Funciones para apretar ENTER y pasar el curso al siguiente TBox
+    
+    private void txtNuevaPersonaNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNuevaPersonaNombreActionPerformed
+        txtNuevaPersonaNombre.transferFocus();
+    }//GEN-LAST:event_txtNuevaPersonaNombreActionPerformed
+
+    private void txtNuevaPersonaApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNuevaPersonaApellidoActionPerformed
+        txtNuevaPersonaApellido.transferFocus();
+    }//GEN-LAST:event_txtNuevaPersonaApellidoActionPerformed
+
+    private void txtNuevaPersonaDNIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNuevaPersonaDNIActionPerformed
+        txtNuevaPersonaDNI.transferFocus();
+    }//GEN-LAST:event_txtNuevaPersonaDNIActionPerformed
+
+    private void txtNuevaPersonaTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNuevaPersonaTelefonoActionPerformed
+        txtNuevaPersonaTelefono.transferFocus();
+    }//GEN-LAST:event_txtNuevaPersonaTelefonoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -446,6 +490,7 @@ public class NuevaPersona extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnNuevoUsuarioAgregar;
     private javax.swing.JButton btnNuevoUsuarioCancelar;
     private javax.swing.JButton btnNuevoUsuarioGuardar;
+    private javax.swing.JButton btnSalir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -454,19 +499,14 @@ public class NuevaPersona extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JTable tableNuevaPersona;
     private javax.swing.JTextPane txtBuscar;
-    private javax.swing.JTextPane txtIDpersona;
-    private javax.swing.JTextPane txtNuevaPersonaApellido;
-    private javax.swing.JTextPane txtNuevaPersonaDNI;
-    private javax.swing.JTextPane txtNuevaPersonaNombre;
-    private javax.swing.JTextPane txtNuevaPersonaTelefono;
+    private javax.swing.JTextField txtIDpersona;
+    private javax.swing.JTextField txtNuevaPersonaApellido;
+    private javax.swing.JTextField txtNuevaPersonaDNI;
+    private javax.swing.JTextField txtNuevaPersonaNombre;
+    private javax.swing.JTextField txtNuevaPersonaTelefono;
     // End of variables declaration//GEN-END:variables
 }
