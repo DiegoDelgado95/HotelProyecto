@@ -3,11 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/D:/Documentos/NetBeansProjects/ProyectoHotel/src/proyectohotel/Ocupacion.java</file>
             <file>file:/D:/Documentos/NetBeansProjects/ProyectoHotel/src/proyectohotel/Persona.java</file>
-            <file>file:/D:/Documentos/NetBeansProjects/ProyectoHotel/src/Conexiones/Conexion.java</file>
-            <file>file:/D:/Documentos/NetBeansProjects/ProyectoHotel/src/proyectohotel/ProyectoHotel.java</file>
-            <file>file:/D:/Documentos/NetBeansProjects/ProyectoHotel/src/graficos/NuevaPersona.java</file>
-            <file>file:/D:/Documentos/NetBeansProjects/ProyectoHotel/src/graficos/Login.java</file>
+            <file>file:/D:/Documentos/NetBeansProjects/ProyectoHotel/src/Conexiones/dbOcupacion.java</file>
             <file>file:/D:/Documentos/NetBeansProjects/ProyectoHotel/src/Conexiones/dbPersona.java</file>
             <file>file:/D:/Documentos/NetBeansProjects/ProyectoHotel/src/graficos/Inicio.java</file>
         </group>

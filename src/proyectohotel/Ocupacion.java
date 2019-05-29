@@ -9,27 +9,27 @@ public class Ocupacion {
     int idOcupacion;
     Date DiaIngreso;
     Date DiaSalida;
-    Time HoraIngreso;
-    Time HoraSalida;
     int idPersona;
     int idHabitacion;
     String Estado;
     int idPago;
+    Date DiaReserva;
 
-    public Ocupacion(int idOcupacion, Date DiaIngreso, Date DiaSalida, Time HoraIngreso, Time HoraSalida, int idPersona, int idHabitacion, String Estado, int idPago) {
+    public Ocupacion() {
+    }
+
+    public Ocupacion(int idOcupacion, Date DiaIngreso, Date DiaSalida, int idPersona, int idHabitacion, String Estado, int idPago, Date DiaReserva) {
         this.idOcupacion = idOcupacion;
         this.DiaIngreso = DiaIngreso;
         this.DiaSalida = DiaSalida;
-        this.HoraIngreso = HoraIngreso;
-        this.HoraSalida = HoraSalida;
         this.idPersona = idPersona;
         this.idHabitacion = idHabitacion;
         this.Estado = Estado;
         this.idPago = idPago;
+        this.DiaReserva = DiaReserva;
     }
 
-    public Ocupacion() {
-    }
+    
 
     public int getIdOcupacion() {
         return idOcupacion;
@@ -53,22 +53,6 @@ public class Ocupacion {
 
     public void setDiaSalida(Date DiaSalida) {
         this.DiaSalida = DiaSalida;
-    }
-
-    public Time getHoraIngreso() {
-        return HoraIngreso;
-    }
-
-    public void setHoraIngreso(Time HoraIngreso) {
-        this.HoraIngreso = HoraIngreso;
-    }
-
-    public Time getHoraSalida() {
-        return HoraSalida;
-    }
-
-    public void setHoraSalida(Time HoraSalida) {
-        this.HoraSalida = HoraSalida;
     }
 
     public int getIdPersona() {
@@ -102,6 +86,17 @@ public class Ocupacion {
     public void setIdPago(int idPago) {
         this.idPago = idPago;
     }
+
+    public Date getDiaReserva() {
+        return DiaReserva;
+    }
+
+    public void setDiaReserva(Date DiaReserva) {
+        this.DiaReserva = DiaReserva;
+    }
+
+    
+
     
     
     
