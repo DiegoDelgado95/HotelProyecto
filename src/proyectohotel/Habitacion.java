@@ -2,22 +2,31 @@
 package proyectohotel;
 
 public class Habitacion {
+    int idHabitacion;
     int Numero;
     String Tipo;
-    Boolean Matrimoñal;
-    Boolean CamaSola;
+    String Descripcion;
     String Estado;
     int Precio;
     
-    public Habitacion (int Numero, String Tipo, Boolean Matrimoñal, Boolean CamaSola, int Precio,String Estado){
+    public Habitacion (int idHabitacion, int Numero, String Tipo, String Descripcion, int Precio,String Estado){
+        this.idHabitacion = idHabitacion;
         this.Numero = Numero;
         this.Tipo = Tipo;
-        this.Matrimoñal = Matrimoñal;
-        this.CamaSola = CamaSola;
+        this.Descripcion = Descripcion;
         this.Precio = Precio;
         this.Estado = Estado;
     }
 
+    public int getIdHabitacion() {
+        return idHabitacion;
+    }
+
+    public void setIdHabitacion(int idHabitacion) {
+        this.idHabitacion = idHabitacion;
+    }
+
+    
     public int getNumero() {
         return Numero;
     }
@@ -34,22 +43,6 @@ public class Habitacion {
         this.Tipo = Tipo;
     }
 
-    public Boolean getMatrimoñal() {
-        return Matrimoñal;
-    }
-
-    public void setMatrimoñal(Boolean Matrimoñal) {
-        this.Matrimoñal = Matrimoñal;
-    }
-
-    public Boolean getCamaSola() {
-        return CamaSola;
-    }
-
-    public void setCamaSola(Boolean CamaSola) {
-        this.CamaSola = CamaSola;
-    }
-
     public String getEstado() {
         return Estado;
     }
@@ -64,6 +57,14 @@ public class Habitacion {
 
     public void setPrecio(int Precio) {
         this.Precio = Precio;
+    }
+
+    public String getDescripcion() {
+        return Descripcion;
+    }
+
+    public void setDescripcion(String Descripcion) {
+        this.Descripcion = Descripcion;
     }
     
     
