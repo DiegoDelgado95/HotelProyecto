@@ -27,15 +27,15 @@ public class dbOcupacion {
     //Funcion para mostrar datos en la tabla
     public DefaultTableModel mostrar(String buscar){
         DefaultTableModel modelo;
-        String [] titulos = {"id","Cliente", "idPersona","Habitacion", "idHabitacion", "idPago", "diaIngreso", "diaEgreso", "diaReserva", "Estado"};
-        String [] registro = new String[10];
+        String [] titulos = {"id","Cliente", "idPersona","Habitacion", "idHabitacion", "diaIngreso", "diaEgreso", "diaReserva", "Estado"};
+        String [] registro = new String[9];
         
         modelo = new DefaultTableModel(null,titulos);
         
-        sSQL = "Select o.id,(Select nombre from Persona where idPersona = o.Persona_idPersona)as clienten,"+
-                "(Select apellido from Persona where idPersona = o.Persona_idPersona)as clienteap, o.Persona_idPersona,h.numero,"+
-                "o.Habitacion_idHabitacion, o.Pago_idPago, o.diaIngreso, o.diaEgreso, o.diaReserva, o.estado"+
-                "from Ocupacion o inner join Habitacion h on o.Habitacion_idHabitacion = h.idHabitacion where r.diaIngreso like '%"+buscar+"%' order by idOcupacion asc";
+        sSQL = "Select o.idOcupacion,(Select nombre from Persona where idPersona = o.Persona_idPersona)as clienten,\n" +
+"                (Select apellido from Persona where idPersona = o.Persona_idPersona)as clienteap, o.Persona_idPersona,h.numero,\n" +
+"                o.Habitacion_idHabitacion, o.diaIngreso, o.diaEgreso, o.diaReserva, o.estado\n" +
+"                from Ocupacion o inner join Habitacion h on o.Habitacion_idHabitacion = h.idHabitacion where o.diaIngreso like '%buscar%' order by o.idOcupacion asc";
         
         try {
             Statement at = cn.createStatement();
@@ -47,11 +47,10 @@ public class dbOcupacion {
                 registro[2] = rs.getString("Peronsa_idPersona");
                 registro[3] = rs.getString("numero");
                 registro[4] = rs.getString("Habitacion_idHabitacion");
-                registro[5] = rs.getString("Pago_idPago");
-                registro[6] = rs.getString("diaIngreso");
-                registro[7] = rs.getString("diaEgreso");
-                registro[8] = rs.getString("diaReserva");
-                registro[9] = rs.getString("estado");
+                registro[5] = rs.getString("diaIngreso");
+                registro[6] = rs.getString("diaEgreso");
+                registro[7] = rs.getString("diaReserva");
+                registro[8] = rs.getString("estado");
                 
                 modelo.addRow(registro);
             }
@@ -68,7 +67,7 @@ public class dbOcupacion {
     //Funcion para insetar datos de la ocupacion en la base de datos
     
     public boolean Insertar (Ocupacion o){
-        sSQL = "insert into Ocupacion (diaIngreso, diaEgreso, Persona_idPersona, Habitacion_idHabitacion, estado, Pago_idPago, diaReserva) values (?,?,?,?,?,?,?)";
+        sSQL = "insert into Ocupacion (diaIngreso, diaEgreso, Persona_idPersona, Habitacion_idHabitacion, estado, diaReserva) values (?,?,?,?,?,?)";
         try {
             PreparedStatement pst = cn.prepareStatement(sSQL);
             pst.setDate(1,o.getDiaIngreso());
@@ -76,8 +75,7 @@ public class dbOcupacion {
             pst.setInt(3, o.getIdPersona());
             pst.setInt(4, o.getIdHabitacion());
             pst.setString(5, o.getEstado());
-            pst.setInt(6, o.getIdPago());
-            pst.setDate(7, o.getDiaReserva());
+            pst.setDate(6, o.getDiaReserva());
             
             int m = pst.executeUpdate();
             if (m != 0){
@@ -96,7 +94,7 @@ public class dbOcupacion {
     
     //Funcion para modificar una reserva de la base de datos
     public boolean editar (Ocupacion o){
-        sSQL = "update Ocupacion set diaIngreso=?, diaEgreso=?, horaIngreso=?, horaEgreso=?, Persona_idPersona=?, Habitacion_idHabitacion=?, estado=?, Pago_idPago=?, diaReserva=? where from idOcupacion=?";
+        sSQL = "update Ocupacion set diaIngreso=?, diaEgreso=?, horaIngreso=?, horaEgreso=?, Persona_idPersona=?, Habitacion_idHabitacion=?, estado=?, diaReserva=? where from idOcupacion=?";
         
         try {
             PreparedStatement pst = cn.prepareStatement(sSQL);
@@ -105,9 +103,8 @@ public class dbOcupacion {
             pst.setInt(3, o.getIdPersona());
             pst.setInt(4, o.getIdHabitacion());
             pst.setString(5, o.getEstado());
-            pst.setInt(6, o.getIdPago());
-            pst.setInt(7, o.getIdHabitacion());
-            pst.setDate(8, o.getDiaReserva());
+            pst.setInt(6, o.getIdHabitacion());
+            pst.setDate(7, o.getDiaReserva());
             
             int m = pst.executeUpdate();
             if(m!=0){

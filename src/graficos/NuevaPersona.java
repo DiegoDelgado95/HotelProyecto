@@ -72,6 +72,7 @@ public class NuevaPersona extends javax.swing.JInternalFrame {
         tableNuevaPersona.getColumnModel().getColumn(0).setMaxWidth(0);
         tableNuevaPersona.getColumnModel().getColumn(0).setMinWidth(0);
         tableNuevaPersona.getColumnModel().getColumn(0).setPreferredWidth(0);
+        
     }
     
     //Funcion para llenar la tabla con persona

@@ -12,20 +12,18 @@ public class Ocupacion {
     int idPersona;
     int idHabitacion;
     String Estado;
-    int idPago;
     Date DiaReserva;
 
     public Ocupacion() {
     }
 
-    public Ocupacion(int idOcupacion, Date DiaIngreso, Date DiaSalida, int idPersona, int idHabitacion, String Estado, int idPago, Date DiaReserva) {
+    public Ocupacion(int idOcupacion, Date DiaIngreso, Date DiaSalida, int idPersona, int idHabitacion, String Estado, Date DiaReserva) {
         this.idOcupacion = idOcupacion;
         this.DiaIngreso = DiaIngreso;
         this.DiaSalida = DiaSalida;
         this.idPersona = idPersona;
         this.idHabitacion = idHabitacion;
         this.Estado = Estado;
-        this.idPago = idPago;
         this.DiaReserva = DiaReserva;
     }
 
@@ -77,14 +75,6 @@ public class Ocupacion {
 
     public void setEstado(String Estado) {
         this.Estado = Estado;
-    }
-
-    public int getIdPago() {
-        return idPago;
-    }
-
-    public void setIdPago(int idPago) {
-        this.idPago = idPago;
     }
 
     public Date getDiaReserva() {
