@@ -5,6 +5,10 @@
  */
 package graficos;
 
+import Conexiones.dbHabitacion;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Diego
@@ -16,7 +20,35 @@ public class vistaHabitacion extends javax.swing.JFrame {
      */
     public vistaHabitacion() {
         initComponents();
+        mostrar("");
+        this.setLocationRelativeTo(null);
     }
+    
+    //Ocultar_Columna me oculta la columna de ID de Persona
+    void ocultar_columna(){
+        tableHabitaciones.getColumnModel().getColumn(0).setMaxWidth(0);
+        tableHabitaciones.getColumnModel().getColumn(0).setMinWidth(0);
+        tableHabitaciones.getColumnModel().getColumn(0).setPreferredWidth(0);
+        
+    }
+    
+    //Funcion para llenar la tabla con persona
+    void mostrar (String buscar){
+        try {
+            DefaultTableModel modelo;
+            dbHabitacion func = new dbHabitacion();
+            modelo = func.mostrarVista(buscar);
+            
+            tableHabitaciones.setModel(modelo);
+            ocultar_columna();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
+    
+    
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -29,10 +61,10 @@ public class vistaHabitacion extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        txtBuscar = new javax.swing.JTextField();
+        btnBuscar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tableHabitaciones = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(525, 400));
@@ -41,10 +73,10 @@ public class vistaHabitacion extends javax.swing.JFrame {
 
         jLabel1.setText("Buscar:");
 
-        jButton1.setText("Buscar");
-        jButton1.setActionCommand("");
+        btnBuscar.setText("Buscar");
+        btnBuscar.setActionCommand("");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tableHabitaciones.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -55,7 +87,12 @@ public class vistaHabitacion extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        tableHabitaciones.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                tableHabitacionesMousePressed(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tableHabitaciones);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -65,9 +102,9 @@ public class vistaHabitacion extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
+                .addComponent(btnBuscar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 466, Short.MAX_VALUE)
         );
@@ -77,8 +114,8 @@ public class vistaHabitacion extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE))
         );
@@ -102,6 +139,22 @@ public class vistaHabitacion extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void tableHabitacionesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableHabitacionesMousePressed
+        if(evt.getClickCount() == 2 ){
+            int fila = tableHabitaciones.getSelectedRow();
+            String cod;
+            String valor;
+            
+            cod = tableHabitaciones.getValueAt(fila,0).toString();
+            valor = tableHabitaciones.getValueAt(fila,1).toString() + " " + tableHabitaciones.getValueAt(fila,2).toString();
+            
+            ABM_Ocupacion.txtIDHabitacion.setText(cod);
+            ABM_Ocupacion.txtHabitacion.setText(valor);
+            this.dispose();
+            
+        }
+    }//GEN-LAST:event_tableHabitacionesMousePressed
 
     /**
      * @param args the command line arguments
@@ -139,11 +192,11 @@ public class vistaHabitacion extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnBuscar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTable tableHabitaciones;
+    private javax.swing.JTextField txtBuscar;
     // End of variables declaration//GEN-END:variables
 }

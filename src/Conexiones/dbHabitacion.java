@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import proyectohotel.Habitacion;
 
-public class dbHabiitacion {
+public class dbHabitacion {
     
     private Conexion mysql = new Conexion();
     private Connection cn = mysql.Conectar();
@@ -20,8 +20,8 @@ public class dbHabiitacion {
     
     public DefaultTableModel mostrar (String buscar){
         DefaultTableModel modelo;
-        String [] titulos = {"Numero", "Tipo", "Descripcion", "Precio", "Estado"};
-        String [] registro = new String [5];
+        String [] titulos = {"id","Numero", "Tipo", "Descripcion", "Precio", "Estado"};
+        String [] registro = new String [6];
         
         modelo = new DefaultTableModel(null,titulos);
         
@@ -33,12 +33,12 @@ public class dbHabiitacion {
             
             
             while(rs.next()){
-            
-                registro[0] = rs.getString("numero");
-                registro[1] = rs.getString("tipo");
-                registro[2] = rs.getString("descripcion");
-                registro[3] = rs.getString("precio");
-                registro[4] = rs.getString("estado");
+                registro[0] = rs.getString("idHabitacion");
+                registro[1] = rs.getString("numero");
+                registro[2] = rs.getString("tipo");
+                registro[3] = rs.getString("descripcion");
+                registro[4] = rs.getString("precio");
+                registro[5] = rs.getString("estado");
                 
                 modelo.addRow(registro);    
             }
@@ -54,13 +54,14 @@ public class dbHabiitacion {
     //Agrego una nueva Habitacion a la Base de Datos
     
     public boolean insetar(Habitacion h){
-        sSQL = "insert into Habitacion (numero, descripcion, precio, estado) values (?,?,?,?)";
+        sSQL = "insert into Habitacion (numero, tipo, descripcion, precio, estado) values (?,?,?,?,?)";
         try {
             PreparedStatement pst = cn.prepareStatement(sSQL);
             pst.setInt(1, h.getNumero());
-            pst.setString(2, h.getDescripcion());
-            pst.setInt(3, h.getPrecio());
-            pst.setString(4, h.getEstado());
+            pst.setString(2, h.getTipo());
+            pst.setString(3, h.getDescripcion());
+            pst.setInt(4, h.getPrecio());
+            pst.setString(5, h.getEstado());
             int n = pst.executeUpdate();
                 if (n!=0){
                     return true;
@@ -77,15 +78,16 @@ public class dbHabiitacion {
     //Funcion para editar una Habitacion en la base de datos
     
     public boolean editar (Habitacion h){
-        sSQL = "update Habitacion set numero=?, descripcion=?, precio=?, estado=?, idhabitacion=?";
+        sSQL = "update Habitacion set numero=?, tipo=?, descripcion=?, precio=?, estado=?, idhabitacion=?";
         
         try {
             PreparedStatement pst = cn.prepareStatement(sSQL);
             pst.setInt(1, h.getNumero());
-            pst.setString(2, h.getDescripcion());
-            pst.setInt(3, h.getPrecio());
-            pst.setString(4, h.getEstado());
-            pst.setInt(5, h.getIdHabitacion());
+            pst.setString(2, h.getTipo());
+            pst.setString(3, h.getDescripcion());
+            pst.setInt(4, h.getPrecio());
+            pst.setString(5, h.getEstado());
+            pst.setInt(6, h.getIdHabitacion());
             int n = pst.executeUpdate();
                 if (n!=0){
                     return true;
@@ -123,8 +125,8 @@ public class dbHabiitacion {
     
     public DefaultTableModel mostrarVista (String buscar){
         DefaultTableModel modelo;
-        String [] titulos = {"Numero", "Tipo", "Descripcion", "Precio", "Estado"};
-        String [] registro = new String [5];
+        String [] titulos = {"id", "Numero", "Tipo", "Descripcion", "Precio", "Estado"};
+        String [] registro = new String [6];
         
         modelo = new DefaultTableModel(null,titulos);
         
@@ -136,12 +138,12 @@ public class dbHabiitacion {
             
             
             while(rs.next()){
-            
-                registro[0] = rs.getString("numero");
-                registro[1] = rs.getString("tipo");
-                registro[2] = rs.getString("descripcion");
-                registro[3] = rs.getString("precio");
-                registro[4] = rs.getString("estado");
+                registro[0] = rs.getString("idHabitacion");
+                registro[1] = rs.getString("numero");
+                registro[2] = rs.getString("tipo");
+                registro[3] = rs.getString("descripcion");
+                registro[4] = rs.getString("precio");
+                registro[5] = rs.getString("estado");
                 
                 modelo.addRow(registro);    
             }

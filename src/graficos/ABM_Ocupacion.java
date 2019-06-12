@@ -152,7 +152,7 @@ public class ABM_Ocupacion extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tableReserva = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setText("Reserva");
@@ -171,6 +171,11 @@ public class ABM_Ocupacion extends javax.swing.JInternalFrame {
         jLabel3.setText("Habitacion:");
 
         btnBuscarHabitacion.setText("...");
+        btnBuscarHabitacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarHabitacionActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("Dia Reserva:");
 
@@ -443,21 +448,21 @@ public class ABM_Ocupacion extends javax.swing.JInternalFrame {
         int d,m,a;
         cal = jcReserva.getCalendar();
         d = cal.get(Calendar.DAY_OF_MONTH);
-        m = cal.get(Calendar.DAY_OF_WEEK);
-        a = cal.get(Calendar.DAY_OF_YEAR) - 1900;
+        m = cal.get(Calendar.MONTH);
+        a = cal.get(Calendar.YEAR) - 1900;
         
         nueOcupacion.setDiaReserva(new Date(a,m,d));
         
         cal = jcIngreso.getCalendar();
         d = cal.get(Calendar.DAY_OF_MONTH);
-        m = cal.get(Calendar.DAY_OF_WEEK);
-        a = cal.get(Calendar.DAY_OF_YEAR)-1900;
+        m = cal.get(Calendar.MONTH);
+        a = cal.get(Calendar.YEAR)-1900;
         nueOcupacion.setDiaIngreso(new Date(a,m,d));
         
         cal = jcSalida.getCalendar();
         d = cal.get(Calendar.DAY_OF_MONTH);
-        m = cal.get(Calendar.DAY_OF_WEEK);
-        a = cal.get(Calendar.DAY_OF_YEAR)-1900;
+        m = cal.get(Calendar.MONTH);
+        a = cal.get(Calendar.YEAR)-1900;
         nueOcupacion.setDiaSalida(new Date(a,m,d));
    
         
@@ -541,6 +546,12 @@ public class ABM_Ocupacion extends javax.swing.JInternalFrame {
         nueVistaCliente.setVisible(true);
     }//GEN-LAST:event_btnBuscarClienteActionPerformed
 
+    private void btnBuscarHabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarHabitacionActionPerformed
+        vistaHabitacion nueVistaHabitacion = new vistaHabitacion();
+        nueVistaHabitacion.toFront();
+        nueVistaHabitacion.setVisible(true);
+    }//GEN-LAST:event_btnBuscarHabitacionActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -603,9 +614,9 @@ public class ABM_Ocupacion extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtBuscar;
     public static javax.swing.JTextField txtCliente;
     private javax.swing.JComboBox<String> txtEstado;
-    private javax.swing.JTextField txtHabitacion;
+    public static javax.swing.JTextField txtHabitacion;
     public static javax.swing.JTextField txtIDCliente;
-    private javax.swing.JTextField txtIDHabitacion;
+    public static javax.swing.JTextField txtIDHabitacion;
     private javax.swing.JTextField txtIDReserva;
     // End of variables declaration//GEN-END:variables
 }

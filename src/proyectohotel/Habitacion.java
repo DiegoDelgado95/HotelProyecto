@@ -9,6 +9,10 @@ public class Habitacion {
     String Estado;
     int Precio;
     
+    public Habitacion(){
+    
+    }
+    
     public Habitacion (int idHabitacion, int Numero, String Tipo, String Descripcion, int Precio,String Estado){
         this.idHabitacion = idHabitacion;
         this.Numero = Numero;

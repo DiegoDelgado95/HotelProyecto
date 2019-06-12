@@ -32,19 +32,19 @@ public class dbOcupacion {
         
         modelo = new DefaultTableModel(null,titulos);
         
-        sSQL = "Select o.idOcupacion,(Select nombre from Persona where idPersona = o.Persona_idPersona)as clienten,\n" +
-"                (Select apellido from Persona where idPersona = o.Persona_idPersona)as clienteap, o.Persona_idPersona,h.numero,\n" +
-"                o.Habitacion_idHabitacion, o.diaIngreso, o.diaEgreso, o.diaReserva, o.estado\n" +
-"                from Ocupacion o inner join Habitacion h on o.Habitacion_idHabitacion = h.idHabitacion where o.diaIngreso like '%buscar%' order by o.idOcupacion asc";
+        sSQL = "Select o.idOcupacion,(Select nombre from Persona where idPersona = o.Persona_idPersona)as clienten," +
+"                (Select apellido from Persona where idPersona = o.Persona_idPersona)as clienteap, o.Persona_idPersona,h.numero," +
+"                o.Habitacion_idHabitacion, o.diaIngreso, o.diaEgreso, o.diaReserva, o.estado" +
+"                from Ocupacion o inner join Habitacion h on o.Habitacion_idHabitacion = h.idHabitacion where o.diaIngreso like '%"+buscar+"%' order by o.idOcupacion asc";
         
         try {
             Statement at = cn.createStatement();
             ResultSet rs= at.executeQuery(sSQL);
             
             while(rs.next()){
-                registro[0] = rs.getString("id");
-                registro[1] = rs.getString("clienten") + " " + rs.getString("clientenap");
-                registro[2] = rs.getString("Peronsa_idPersona");
+                registro[0] = rs.getString("idOcupacion");
+                registro[1] = rs.getString("clienten") + " " + rs.getString("clienteap");
+                registro[2] = rs.getString("Persona_idPersona");
                 registro[3] = rs.getString("numero");
                 registro[4] = rs.getString("Habitacion_idHabitacion");
                 registro[5] = rs.getString("diaIngreso");
@@ -125,7 +125,7 @@ public class dbOcupacion {
         
         try {
             PreparedStatement pst = cn.prepareCall(sSQL);
-            pst.setInt(1, o.getIdHabitacion());
+            pst.setInt(1, o.getIdOcupacion());
             
             int m = pst.executeUpdate();
             if(m != 0){
