@@ -78,7 +78,7 @@ public class dbHabitacion {
     //Funcion para editar una Habitacion en la base de datos
     
     public boolean editar (Habitacion h){
-        sSQL = "update Habitacion set numero=?, tipo=?, descripcion=?, precio=?, estado=?, idhabitacion=?";
+        sSQL = "update Habitacion set numero=?, tipo=?, descripcion=?, precio=?, estado=? where idHabitacion=?";
         
         try {
             PreparedStatement pst = cn.prepareStatement(sSQL);
@@ -99,6 +99,45 @@ public class dbHabitacion {
             return false;
         }
     }
+    
+    public boolean desocupar (Habitacion h){
+        sSQL = "update Habitacion set estado='Disponible' where idHabitacion=?";
+        
+        try {
+            PreparedStatement pst = cn.prepareStatement(sSQL);
+            pst.setInt(1, h.getIdHabitacion());
+            int n = pst.executeUpdate();
+                if (n!=0){
+                    return true;
+                }else{
+                    return false;
+                }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+            return false;
+        }
+    }
+    
+    public boolean ocupar (Habitacion h){
+        sSQL = "update Habitacion set estado='Ocupado' where idHabitacion=?";
+        
+        try {
+            PreparedStatement pst = cn.prepareStatement(sSQL);
+            pst.setInt(1, h.getIdHabitacion());
+            int n = pst.executeUpdate();
+                if (n!=0){
+                    return true;
+                }else{
+                    return false;
+                }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+            return false;
+        }
+    }
+    
+    
+    
     
     //Funcion para eliminar una Habitacion en la base de datos
     

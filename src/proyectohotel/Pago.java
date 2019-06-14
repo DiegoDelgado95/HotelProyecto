@@ -5,6 +5,7 @@ import java.sql.Date;
 public class Pago {
     
     int idPago;
+    int idReserva;
     int numero;
     double monto;
     String tipoPago;
@@ -13,12 +14,21 @@ public class Pago {
     public Pago(){
     }
 
-    public Pago(int idPago, int numero, double monto, String tipoPago, Date fechaPago) {
+    public Pago(int idPago, int idReserva, int numero, double monto, String tipoPago, Date fechaPago) {
         this.idPago = idPago;
+        this.idReserva = idReserva;
         this.numero = numero;
         this.monto = monto;
         this.tipoPago = tipoPago;
         this.fechaPago = fechaPago;
+    }
+
+    public int getIdReserva() {
+        return idReserva;
+    }
+
+    public void setIdReserva(int idReserva) {
+        this.idReserva = idReserva;
     }
 
     public int getIdPago() {

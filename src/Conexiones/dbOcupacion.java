@@ -94,7 +94,7 @@ public class dbOcupacion {
     
     //Funcion para modificar una reserva de la base de datos
     public boolean editar (Ocupacion o){
-        sSQL = "update Ocupacion set diaIngreso=?, diaEgreso=?, horaIngreso=?, horaEgreso=?, Persona_idPersona=?, Habitacion_idHabitacion=?, estado=?, diaReserva=? where from idOcupacion=?";
+        sSQL = "update Ocupacion set diaIngreso=?, diaEgreso=?, horaIngreso=?, horaEgreso=?, Persona_idPersona=?, Habitacion_idHabitacion=?, estado=?, diaReserva=? where idOcupacion=?";
         
         try {
             PreparedStatement pst = cn.prepareStatement(sSQL);
@@ -105,6 +105,26 @@ public class dbOcupacion {
             pst.setString(5, o.getEstado());
             pst.setInt(6, o.getIdHabitacion());
             pst.setDate(7, o.getDiaReserva());
+            pst.setInt(8, o.getIdOcupacion());
+            
+            int m = pst.executeUpdate();
+            if(m!=0){
+                return true;
+            }else{
+                return false;
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+            return false;
+        }
+    }
+    
+    public boolean pagar (Ocupacion o){
+        sSQL = "update Ocupacion set estado='Pagado' where  idOcupacion=?";
+        
+        try {
+            PreparedStatement pst = cn.prepareStatement(sSQL);
+            pst.setInt(1, o.getIdOcupacion());
             
             int m = pst.executeUpdate();
             if(m!=0){
