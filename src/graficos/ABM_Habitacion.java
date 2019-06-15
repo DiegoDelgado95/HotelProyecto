@@ -141,7 +141,7 @@ public class ABM_Habitacion extends javax.swing.JInternalFrame {
 
         jLabel5.setText("Estado:");
 
-        txtEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Disponible", "Ocupada", "Limpieza", "Mantenimiento", "Fuera de servicio", " " }));
+        txtEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Disponible", "Ocupado", "Limpieza", "Mantenimiento", "Fuera de servicio", " " }));
 
         jLabel6.setText("Precio: ");
 

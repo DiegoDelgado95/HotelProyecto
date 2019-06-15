@@ -84,7 +84,6 @@ public class ABM_Pago extends javax.swing.JInternalFrame {
         btnEliminar.setEnabled(true);
         
         txtNumero.setText("");
-        txtMontoTotal.setText("");
     }
     
     //Funcion para llenar la tabla con persona
@@ -226,7 +225,8 @@ public class ABM_Pago extends javax.swing.JInternalFrame {
                         .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtIDPago, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addComponent(jLabel1)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -237,9 +237,9 @@ public class ABM_Pago extends javax.swing.JInternalFrame {
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jLabel3)
                                         .addComponent(jLabel2)
-                                        .addComponent(jLabel4)
                                         .addComponent(jLabel7)
-                                        .addComponent(jLabel8))
+                                        .addComponent(jLabel8)
+                                        .addComponent(jLabel4))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -247,47 +247,47 @@ public class ABM_Pago extends javax.swing.JInternalFrame {
                                             .addComponent(txtIDHabitacion, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addGap(18, 18, 18)
                                             .addComponent(txtHabitacion, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jcFechaPago, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtMontoTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                            .addComponent(txtIDPago, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(jcFechaPago, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtMontoTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(16, 16, 16)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
-                            .addComponent(txtIDReserva, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtIDReserva, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(33, 33, 33))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(txtCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtIDHabitacion, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2)
-                            .addComponent(txtHabitacion, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtIDHabitacion, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel2)
+                        .addComponent(txtHabitacion, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jLabel3)
+                    .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jcFechaPago, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtMontoTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8))
-                .addGap(18, 18, 18)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(jcFechaPago, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtMontoTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel8)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel7)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtIDPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -354,7 +354,7 @@ public class ABM_Pago extends javax.swing.JInternalFrame {
                     .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 284, Short.MAX_VALUE)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -387,86 +387,6 @@ public class ABM_Pago extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        if(txtNumero.getText().equals("") && txtMontoTotal.getText().equals("")){
-            JOptionPane.showMessageDialog(null, "Se deben llenar todos los campos");
-        }else{
-            Pago nuePago = new Pago();
-            dbPago Nuevo = new dbPago();
-            
-            nuePago.setIdReserva(Integer.parseInt(txtIDReserva.getText()));
-            nuePago.setNumero(Integer.parseInt(txtNumero.getText()));
-            nuePago.setMonto(Double.parseDouble(txtMontoTotal.getText()));
-            
-            Calendar cal;
-            int d,m,a;
-            
-            cal = jcFechaPago.getCalendar();
-            d = cal.get(Calendar.DAY_OF_MONTH);
-            m = cal.get(Calendar.MONTH);
-            a = cal.get(Calendar.YEAR)-1900;
-            
-            nuePago.setFechaPago(new Date (a,m,d));
-                    
-            int valor = txtTipo.getSelectedIndex();
-            nuePago.setTipoPago((String)txtTipo.getItemAt(valor));
-
-            if (accion.equals("guardar")){
-                if(Nuevo.insertar(nuePago)){
-                    JOptionPane.showMessageDialog(null, "El pago por "+txtMontoTotal.getText()+"$ del cliente "+txtCliente.getText()+" se ah realizado correctamente");
-                    mostrar(idReserva);
-                    
-                    //Desocupar habitacion
-                    dbHabitacion func2 = new dbHabitacion();
-                    Habitacion dts2 = new Habitacion();
-                    
-                    dts2.setIdHabitacion(Integer.parseInt(txtIDHabitacion.getText()));
-                    func2.desocupar(dts2);
-                    
-                    //Pagar la Reserva
-                    dbOcupacion func3 = new dbOcupacion();
-                    Ocupacion dts3 = new Ocupacion();
-                    
-                    dts3.setIdOcupacion(Integer.parseInt(txtIDReserva.getText()));
-                    func3.pagar(dts3);
-                    
-                    inhabilitar();
-                    
-                }
-            }else if(accion.equals("editar")){
-                nuePago.setIdPago(Integer.parseInt(txtIDPago.getText()));
-                if(Nuevo.editar(nuePago)){
-                    JOptionPane.showMessageDialog(null, "El pago del cliente "+txtCliente.getText()+" se edito correctamente");
-                    mostrar(idReserva);
-                    inhabilitar();
-                }
-            }
-        }
-
-    }//GEN-LAST:event_btnGuardarActionPerformed
-
-    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        inhabilitar();
-    }//GEN-LAST:event_btnCancelarActionPerformed
-
-    private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
-        habilitar();
-        btnGuardar.setText("Guardar");
-        accion="guardar";
-    }//GEN-LAST:event_btnNuevoActionPerformed
-
-    private void txtIDReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDReservaActionPerformed
-        txtIDReserva.transferFocus();
-    }//GEN-LAST:event_txtIDReservaActionPerformed
-
-    private void txtIDHabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDHabitacionActionPerformed
-        txtIDHabitacion.transferFocus();
-    }//GEN-LAST:event_txtIDHabitacionActionPerformed
-
-    private void txtHabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHabitacionActionPerformed
-        txtHabitacion.transferFocus();
-    }//GEN-LAST:event_txtHabitacionActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         this.dispose();
@@ -508,13 +428,92 @@ public class ABM_Pago extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNumeroActionPerformed
 
+    private void txtTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTipoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTipoActionPerformed
+
     private void txtClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtClienteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtClienteActionPerformed
 
-    private void txtTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTipoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTipoActionPerformed
+    private void txtHabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHabitacionActionPerformed
+        txtHabitacion.transferFocus();
+    }//GEN-LAST:event_txtHabitacionActionPerformed
+
+    private void txtIDHabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDHabitacionActionPerformed
+        txtIDHabitacion.transferFocus();
+    }//GEN-LAST:event_txtIDHabitacionActionPerformed
+
+    private void txtIDReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDReservaActionPerformed
+        txtIDReserva.transferFocus();
+    }//GEN-LAST:event_txtIDReservaActionPerformed
+
+    private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
+        habilitar();
+        btnGuardar.setText("Guardar");
+        accion="guardar";
+    }//GEN-LAST:event_btnNuevoActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        inhabilitar();
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        if(txtNumero.getText().equals("") && txtMontoTotal.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Se deben llenar todos los campos");
+        }else{
+            Pago nuePago = new Pago();
+            dbPago Nuevo = new dbPago();
+
+            nuePago.setIdReserva(Integer.parseInt(txtIDReserva.getText()));
+            nuePago.setNumero(Integer.parseInt(txtNumero.getText()));
+            nuePago.setMonto(Double.parseDouble(txtMontoTotal.getText()));
+
+            Calendar cal;
+            int d,m,a;
+
+            cal = jcFechaPago.getCalendar();
+            d = cal.get(Calendar.DAY_OF_MONTH);
+            m = cal.get(Calendar.MONTH);
+            a = cal.get(Calendar.YEAR)-1900;
+
+            nuePago.setFechaPago(new Date (a,m,d));
+
+            int valor = txtTipo.getSelectedIndex();
+            nuePago.setTipoPago((String)txtTipo.getItemAt(valor));
+
+            if (accion.equals("guardar")){
+                if(Nuevo.insertar(nuePago)){
+                    JOptionPane.showMessageDialog(null, "El pago por "+txtMontoTotal.getText()+"$ del cliente "+txtCliente.getText()+" se ah realizado correctamente");
+                    mostrar(idReserva);
+
+                    //Desocupar habitacion
+                    dbHabitacion func2 = new dbHabitacion();
+                    Habitacion dts2 = new Habitacion();
+
+                    dts2.setIdHabitacion(Integer.parseInt(txtIDHabitacion.getText()));
+                    func2.desocupar(dts2);
+
+                    //Pagar la Reserva
+                    dbOcupacion func3 = new dbOcupacion();
+                    Ocupacion dts3 = new Ocupacion();
+
+                    dts3.setIdOcupacion(Integer.parseInt(txtIDReserva.getText()));
+                    func3.pagar(dts3);
+
+                    inhabilitar();
+
+                }
+            }else if(accion.equals("editar")){
+                nuePago.setIdPago(Integer.parseInt(txtIDPago.getText()));
+                if(Nuevo.editar(nuePago)){
+                    JOptionPane.showMessageDialog(null, "El pago del cliente "+txtCliente.getText()+" se edito correctamente");
+                    mostrar(idReserva);
+                    inhabilitar();
+                }
+            }
+        }
+    }//GEN-LAST:event_btnGuardarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

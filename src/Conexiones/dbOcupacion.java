@@ -27,14 +27,14 @@ public class dbOcupacion {
     //Funcion para mostrar datos en la tabla
     public DefaultTableModel mostrar(String buscar){
         DefaultTableModel modelo;
-        String [] titulos = {"id","Cliente", "idPersona","Habitacion", "idHabitacion", "diaIngreso", "diaEgreso", "diaReserva", "Estado"};
-        String [] registro = new String[9];
+        String [] titulos = {"id","Cliente", "idPersona","Habitacion", "idHabitacion", "Dia Ingreso", "Dia Egreso", "Dia Reserva", "Estado","precio"};
+        String [] registro = new String[10];
         
         modelo = new DefaultTableModel(null,titulos);
         
         sSQL = "Select o.idOcupacion,(Select nombre from Persona where idPersona = o.Persona_idPersona)as clienten," +
 "                (Select apellido from Persona where idPersona = o.Persona_idPersona)as clienteap, o.Persona_idPersona,h.numero," +
-"                o.Habitacion_idHabitacion, o.diaIngreso, o.diaEgreso, o.diaReserva, o.estado" +
+"                o.Habitacion_idHabitacion, o.diaIngreso, o.diaEgreso, o.diaReserva, o.estado, h.precio" +
 "                from Ocupacion o inner join Habitacion h on o.Habitacion_idHabitacion = h.idHabitacion where o.diaIngreso like '%"+buscar+"%' order by o.idOcupacion asc";
         
         try {
@@ -51,6 +51,7 @@ public class dbOcupacion {
                 registro[6] = rs.getString("diaEgreso");
                 registro[7] = rs.getString("diaReserva");
                 registro[8] = rs.getString("estado");
+                registro[9] = rs.getString("precio");
                 
                 modelo.addRow(registro);
             }
@@ -94,7 +95,7 @@ public class dbOcupacion {
     
     //Funcion para modificar una reserva de la base de datos
     public boolean editar (Ocupacion o){
-        sSQL = "update Ocupacion set diaIngreso=?, diaEgreso=?, horaIngreso=?, horaEgreso=?, Persona_idPersona=?, Habitacion_idHabitacion=?, estado=?, diaReserva=? where idOcupacion=?";
+        sSQL = "update Ocupacion set diaIngreso=?, diaEgreso=?, Persona_idPersona=?, Habitacion_idHabitacion=?, estado=?, diaReserva=? where idOcupacion=?";
         
         try {
             PreparedStatement pst = cn.prepareStatement(sSQL);
@@ -103,9 +104,8 @@ public class dbOcupacion {
             pst.setInt(3, o.getIdPersona());
             pst.setInt(4, o.getIdHabitacion());
             pst.setString(5, o.getEstado());
-            pst.setInt(6, o.getIdHabitacion());
-            pst.setDate(7, o.getDiaReserva());
-            pst.setInt(8, o.getIdOcupacion());
+            pst.setDate(6, o.getDiaReserva());
+            pst.setInt(7, o.getIdOcupacion());
             
             int m = pst.executeUpdate();
             if(m!=0){

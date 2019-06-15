@@ -25,7 +25,7 @@ public class dbHabitacion {
         
         modelo = new DefaultTableModel(null,titulos);
         
-        sSQL = "Select * from Habitacion where numero like '%"+buscar+"%' order by idHabitacion";
+        sSQL = "Select * from Habitacion where numero like '%"+buscar+"%' order by numero asc";
         
         try {
             Statement st = cn.createStatement();
