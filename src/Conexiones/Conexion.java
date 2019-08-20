@@ -10,10 +10,10 @@ import java.sql.Statement;
 import javax.swing.JOptionPane;
 
 public class Conexion {
-    public String db="JJ4J8aIBJP";
+    public String db="eJ0V6brlwS";
     public String url="jdbc:mysql://remotemysql.com/"+db;
-    public String user="JJ4J8aIBJP";
-    public String pass="hPulMZ2Dbw";
+    public String user="eJ0V6brlwS";
+    public String pass="bwWZqWd2Hc";
     
     public Conexion(){
     }

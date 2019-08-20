@@ -6,6 +6,10 @@
 package graficos;
 
 import Conexiones.Conexion;
+import Conexiones.dbHabitacion;
+import Conexiones.dbOcupacion;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -19,6 +23,53 @@ public class Inicio extends javax.swing.JFrame {
     public Inicio() {
         initComponents();
         this.setExtendedState(Inicio.MAXIMIZED_BOTH);
+        mostrarHabitaciones();
+        mostrarReservas();
+    }
+    
+    void ocultar_columna_habitaciones(){
+        JTHabitaciones.getColumnModel().getColumn(0).setMaxWidth(0);
+        JTHabitaciones.getColumnModel().getColumn(0).setMinWidth(0);
+        JTHabitaciones.getColumnModel().getColumn(0).setPreferredWidth(0);
+    }
+    
+    void mostrarHabitaciones(){
+        try {
+            DefaultTableModel modelo;
+            dbHabitacion func = new dbHabitacion();
+            modelo = func.mostrarInicio();
+            JTHabitaciones.setModel(modelo);
+            ocultar_columna_habitaciones();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,e);
+        }
+    }
+    
+    void ocultar_columna_reservas(){
+        JTReservas.getColumnModel().getColumn(0).setMaxWidth(0);
+        JTReservas.getColumnModel().getColumn(0).setMinWidth(0);
+        JTReservas.getColumnModel().getColumn(0).setPreferredWidth(0);
+        
+        JTReservas.getColumnModel().getColumn(2).setMaxWidth(0);
+        JTReservas.getColumnModel().getColumn(2).setMinWidth(0);
+        JTReservas.getColumnModel().getColumn(2).setPreferredWidth(0);
+        
+        JTReservas.getColumnModel().getColumn(4).setMaxWidth(0);
+        JTReservas.getColumnModel().getColumn(4).setMinWidth(0);
+        JTReservas.getColumnModel().getColumn(4).setPreferredWidth(0);
+        
+    }
+    
+    void mostrarReservas(){
+        try {
+            DefaultTableModel modelo2;
+            dbOcupacion func2 = new dbOcupacion();
+            modelo2 = func2.mostrarInicio();
+            JTReservas.setModel(modelo2);
+            ocultar_columna_reservas();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
     }
 
     /**
@@ -32,6 +83,12 @@ public class Inicio extends javax.swing.JFrame {
 
         jMenu4 = new javax.swing.JMenu();
         dpnEscritorio = new javax.swing.JDesktopPane();
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        JTHabitaciones = new javax.swing.JTable();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        JTReservas = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         mnuPersonaCrear = new javax.swing.JMenu();
@@ -53,15 +110,87 @@ public class Inicio extends javax.swing.JFrame {
 
         dpnEscritorio.setName("dpnEscritorio"); // NOI18N
 
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Habitaciones"));
+
+        JTHabitaciones.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(JTHabitaciones);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 606, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 236, Short.MAX_VALUE)
+        );
+
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Reservas"));
+
+        JTReservas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(JTReservas);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 606, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 267, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        dpnEscritorio.setLayer(jPanel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        dpnEscritorio.setLayer(jPanel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
         javax.swing.GroupLayout dpnEscritorioLayout = new javax.swing.GroupLayout(dpnEscritorio);
         dpnEscritorio.setLayout(dpnEscritorioLayout);
         dpnEscritorioLayout.setHorizontalGroup(
             dpnEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
+            .addGroup(dpnEscritorioLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(dpnEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(249, Short.MAX_VALUE))
         );
         dpnEscritorioLayout.setVerticalGroup(
             dpnEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 479, Short.MAX_VALUE)
+            .addGroup(dpnEscritorioLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jMenu1.setText("Archivos");
@@ -181,6 +310,8 @@ public class Inicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable JTHabitaciones;
+    private javax.swing.JTable JTReservas;
     public static javax.swing.JDesktopPane dpnEscritorio;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
@@ -191,6 +322,10 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JMenu mnuPersonaCrear;
     // End of variables declaration//GEN-END:variables
 }

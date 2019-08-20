@@ -49,6 +49,37 @@ public class dbHabitacion {
         }   
     }
     
+    public DefaultTableModel mostrarInicio (){
+        DefaultTableModel modelo;
+        String [] titulos = {"id","Numero", "Tipo", "Descripcion", "Precio", "Estado"};
+        String [] registro = new String [6];
+        
+        modelo = new DefaultTableModel(null,titulos);
+        
+        sSQL = "Select * from Habitacion order by numero asc";
+        
+        try {
+            Statement st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sSQL);
+            
+            
+            while(rs.next()){
+                registro[0] = rs.getString("idHabitacion");
+                registro[1] = rs.getString("numero");
+                registro[2] = rs.getString("tipo");
+                registro[3] = rs.getString("descripcion");
+                registro[4] = rs.getString("precio");
+                registro[5] = rs.getString("estado");
+                
+                modelo.addRow(registro);    
+            }
+            return modelo;    
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,e);
+            return null;
+        }   
+    }
+    
     
     
     //Agrego una nueva Habitacion a la Base de Datos

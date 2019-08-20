@@ -65,6 +65,48 @@ public class dbOcupacion {
         }
     }
     
+    public DefaultTableModel mostrarInicio(){
+        DefaultTableModel modelo;
+        String [] titulos = {"id","Cliente", "idPersona","Habitacion", "idHabitacion", "Dia Ingreso", "Dia Egreso", "Dia Reserva", "Estado","precio"};
+        String [] registro = new String[10];
+        
+        modelo = new DefaultTableModel(null,titulos);
+        
+        sSQL = "Select o.idOcupacion,(Select nombre from Persona where idPersona = o.Persona_idPersona)as clienten," +
+"                (Select apellido from Persona where idPersona = o.Persona_idPersona)as clienteap, o.Persona_idPersona,h.numero," +
+"                o.Habitacion_idHabitacion, o.diaIngreso, o.diaEgreso, o.diaReserva, o.estado, h.precio" +
+"                from Ocupacion o inner join Habitacion h on o.Habitacion_idHabitacion = h.idHabitacion where o.estado='Alquilar' or o.estado='Reserva' order by o.idOcupacion desc";
+        
+        try {
+            Statement at = cn.createStatement();
+            ResultSet rs= at.executeQuery(sSQL);
+            
+            while(rs.next()){
+                registro[0] = rs.getString("idOcupacion");
+                registro[1] = rs.getString("clienten") + " " + rs.getString("clienteap");
+                registro[2] = rs.getString("Persona_idPersona");
+                registro[3] = rs.getString("numero");
+                registro[4] = rs.getString("Habitacion_idHabitacion");
+                registro[5] = rs.getString("diaIngreso");
+                registro[6] = rs.getString("diaEgreso");
+                registro[7] = rs.getString("diaReserva");
+                registro[8] = rs.getString("estado");
+                registro[9] = rs.getString("precio");
+                
+                modelo.addRow(registro);
+            }
+            
+            return modelo;
+            
+            
+        } catch (Exception e) {
+            JOptionPane.showConfirmDialog(null,e);
+            return null;
+        }
+    }
+    
+    
+    
     //Funcion para insetar datos de la ocupacion en la base de datos
     
     public boolean Insertar (Ocupacion o){
